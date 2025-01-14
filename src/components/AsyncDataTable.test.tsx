@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, test, expect, vi } from "vitest";
-import AsyncAgGrid from "./AsyncDataTable";
+import AsyncDataTable from "./AsyncDataTable";
 import * as api from "./api";
 
 // Step 1: Mock the entire api module
@@ -11,15 +11,15 @@ vi.mock("./api", () => ({
   ]),
 }));
 
-describe.only("AsyncAgGrid", () => {
+describe.only("AsyncDataTable", () => {
   test("displays loading state before data arrives", () => {
-    const { container } = render(<AsyncAgGrid />);
+    const { container } = render(<AsyncDataTable />);
     const loadingElement = container.querySelector('.ag-overlay-loading-center');
     expect(loadingElement).toBeInTheDocument();
   });
 
   test("renders AG Grid with data after async fetch", async () => {
-    render(<AsyncAgGrid />);
+    render(<AsyncDataTable />);
 
     // Wait for mocked row data to appear
     // "Mocked" is from the array in our mockResolvedValue

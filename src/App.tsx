@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
-import AsyncDataTable from "./components/AsyncDataTable";
+// import AsyncDataTable from "./components/AsyncDataTable"; // Uncomment this line to use the AsyncDataTable component.
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -33,13 +33,13 @@ function App() {
   // Container: Defines the grid's theme & dimensions.
   return (
     <div style={{ width: "100%", height: '100vh' }}>
-      {/* <AgGridReact
+      <AgGridReact
         rowData={rowData}
         columnDefs={colDefs as any}
         defaultColDef={defaultColDef}
-      /> */}
-      {/* Create a new Async data table */}
-      <AsyncDataTable />
+      />
+      {/* Uncomment the below line and comment the line above to test AsyncDataTable component.*/}
+      {/* <AsyncDataTable /> */}
     </div>
   );
 }
