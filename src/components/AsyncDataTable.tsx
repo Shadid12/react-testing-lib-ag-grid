@@ -2,14 +2,15 @@
 import { useState, useEffect, useMemo } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { AllCommunityModule, ColDef, ModuleRegistry } from "ag-grid-community";
-import { fetchData } from "./api";
+import { fetchData, IDataType } from "./api";
 import { ICar } from "../App";
+import PriceCellRenderer from "./PriceCellRenderer";
 
 // Register AG Grid modules (only once per app)
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export default function AsyncDataTable() {
-  const [rowData, setRowData] = useState<any[] | null>(null);
+  const [rowData, setRowData] = useState<IDataType[] | null>(null);
 
   // Column Definitions: Defines & controls grid columns.
   const [colDefs, setColDefs] = useState<ColDef<ICar>[]>([

@@ -8,7 +8,7 @@ vi.mock("./api", () => ({
   fetchData: vi.fn().mockResolvedValue([
     { make: "Mocked", model: "Car", price: 10000 },
     { make: "Fake", model: "Vehicle", price: 20000 },
-  ]),
+  ] as api.IDataType[]),
 }));
 
 describe.only("AsyncDataTable", () => {

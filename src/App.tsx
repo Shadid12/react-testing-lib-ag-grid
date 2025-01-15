@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { AllCommunityModule, ColDef, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import PriceCellRenderer from "./components/PriceCellRenderer";
+import { IDataType } from "./components/api";
 
 export type ICar = {
   make: string;
@@ -17,7 +18,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 
 function App() {
   // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState([
+  const [rowData, setRowData] = useState<IDataType[]>([
     { make: "Tesla", model: "Model Y", price: 64950, electric: true },
     { make: "Ford", model: "F-Series", price: 33850, electric: false },
     { make: "Toyota", model: "Corolla", price: 29600, electric: false },
