@@ -1,7 +1,16 @@
 import { useState, useMemo } from "react";
-import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import { AllCommunityModule, ColDef, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import PriceCellRenderer from "./components/PriceCellRenderer";
+
+export type ICar = {
+  make: string;
+  model: string;
+  price: number;
+  electric: boolean;
+}
+
+
 // import AsyncDataTable from "./components/AsyncDataTable"; // Uncomment this line to use the AsyncDataTable component.
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -18,12 +27,13 @@ function App() {
   ]);
 
   // Column Definitions: Defines & controls grid columns.
-  const [colDefs, setColDefs] = useState([
-    { field: "make", editable: true, filter: true },
-    { field: "model" },
-    { field: "price", editable: true, cellRenderer: PriceCellRenderer },
-    { field: "electric" },
+  const [colDefs, setColDefs] = useState<ColDef<ICar>[]>([
+    { field: 'make', editable: true, filter: true },
+    { field: 'model' },
+    { field: 'price', editable: true, cellRenderer: PriceCellRenderer },
+    { field: 'electric' },
   ]);
+  
 
   const defaultColDef = useMemo(() => { 
     return {

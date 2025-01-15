@@ -1,8 +1,9 @@
 // src/components/AsyncDataTable.tsx
 import { useState, useEffect, useMemo } from "react";
 import { AgGridReact } from "ag-grid-react";
-import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import { AllCommunityModule, ColDef, ModuleRegistry } from "ag-grid-community";
 import { fetchData } from "./api";
+import { ICar } from "../App";
 
 // Register AG Grid modules (only once per app)
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -11,11 +12,11 @@ export default function AsyncDataTable() {
   const [rowData, setRowData] = useState<any[] | null>(null);
 
   // Column Definitions: Defines & controls grid columns.
-  const [colDefs, setColDefs] = useState([
-    { field: "make", editable: true, filter: true },
-    { field: "model" },
-    { field: "price", editable: true },
-    { field: "electric" },
+  const [colDefs, setColDefs] = useState<ColDef<ICar>[]>([
+    { field: 'make', editable: true, filter: true },
+    { field: 'model' },
+    { field: 'price', editable: true, cellRenderer: PriceCellRenderer },
+    { field: 'electric' },
   ]);
 
   // Column defs
